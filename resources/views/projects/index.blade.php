@@ -22,6 +22,11 @@
         <a href="{{ route('projects.show', $project) }}"> Dettaglio </a>
         <a href="{{ route('projects.create') }}" role="button" class="btn btn-primary">Crea progetto</a>
         <a href="{{ route('projects.edit', $project) }}">Modifica</a>
+       
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal-{{ $project->id }}">
+            Elimina              
+          </button>
+       
         @endforeach
     </tbody>
 </table>

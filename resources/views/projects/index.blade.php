@@ -21,6 +21,7 @@
         </tr>
         <a href="{{ route('projects.show', $project) }}"> Dettaglio </a>
         <a href="{{ route('projects.create') }}" role="button" class="btn btn-primary">Crea progetto</a>
+        <a href="{{ route('projects.edit', $project) }}">Modifica</a>
         @endforeach
     </tbody>
 </table>

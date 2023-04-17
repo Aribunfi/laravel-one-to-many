@@ -20,6 +20,7 @@
             <td>...</td>
         </tr>
         <a href="{{ route('projects.show', $project) }}"> Dettaglio </a>
+        <a href="{{ route('projects.create') }}" role="button" class="btn btn-primary">Crea progetto</a>
         @endforeach
     </tbody>
 </table>

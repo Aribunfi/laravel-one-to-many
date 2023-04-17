@@ -1,3 +1,7 @@
+@section('content')
+@include('layouts.partials.errors')
+
+
 <form action="{{ route('projects.store') }}" method="POST">
     @csrf
 

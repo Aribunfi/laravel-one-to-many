@@ -21,6 +21,13 @@
 
             @yield('actions')
 
+
+            @if (session('message'))
+            <div class="alert alert-succes">
+                {{ session('message')}}
+            </div>
+            @endif
+
             @yield('content')
 
         </div>

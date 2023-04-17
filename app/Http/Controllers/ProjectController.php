@@ -26,7 +26,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        return view('projects.create', compact('project'));
     }
 
     /**
@@ -88,9 +88,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $id_project = $project->id;
         $project->delete();
         return redirect()->route('projects.index');
-    }
+    } 
 
     private function validation($data) {
         $validator = Validator::make(

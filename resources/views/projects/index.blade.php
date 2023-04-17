@@ -19,6 +19,7 @@
             <td>{{ $project->description }}</td>
             <td>...</td>
         </tr>
+        <a href="{{ route('projects.show', $project) }}"> Dettaglio </a>
         @endforeach
     </tbody>
 </table>

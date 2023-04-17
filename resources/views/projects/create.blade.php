@@ -2,7 +2,7 @@
 @include('layouts.partials.errors')
 
 
-<form action="{{ route('projects.store') }}" method="POST">
+<form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <label for="title" class="form-label">Title</label>

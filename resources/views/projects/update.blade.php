@@ -1,4 +1,4 @@
-<form action="{{ route('projects.update') }}" method="POST">
+<form action="{{ route('projects.update') }}" method="POST" enctype="multipart/form-data">
     @method('PUT') @csrf
 
     <label for="title" class="form-label">Title</label>

@@ -91,4 +91,41 @@ class ProjectController extends Controller
         $project->delete();
         return redirect()->route('projects.index');
     }
+
+    private function validation($data) {
+        $validator = Validator::make(
+          $data,
+          [
+            'title' => 'required|string|max:20',
+            'year' => "required|integer|between:2009,2023",
+            "kind" => "required|string|in:graphic,web,writing",
+            "time" => "required|integer",
+            "description" => "nullable|string"
+          ],
+          [
+            'title.required' => 'Il titolo è obbligatorio',
+            'title.string' => 'Il titolo deve essere una stringa',
+            'title.max' => 'Il titolo deve massimo di 20 caratteri',
+      
+            'year.required' => 'Anno è obbligatorio',
+            'year.integer' => 'Anno deve essere un numero',
+            'year.unique' => 'Anno deve essere unico',
+            'year.between' => 'Il numero deve essere compreso tra 2009:min e 2023:max',
+      
+            'kind.required' => 'Kind è obbligatorio',
+            'kind.string' => 'Kind deve essere una stringa',
+            'kind.in' => 'Kind deve essere un valore compreso tra "graphic", "web", "writing"',
+            
+            'time.required' => 'Time è obbligatorio',
+            'time.integer' => 'Time deve essere un numero',
+            
+            // 'img.string' => 'L\'immagine deve essere una stringa',
+            
+            'description.string' => 'La descrizione deve essere una stringa',
+          ]
+        )->validate();
+      
+        return $validator;
+      }
 }
+

@@ -37,7 +37,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $this->validation($request->all());
     $project = new Project;
     $project->fill($data);
     $project->save();
@@ -75,7 +75,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $data = $request->all();
+        $data = $this->validation($request->all(), $project->id);
     $project->update($data);
     return redirect()->route('projects.show', $project);
     }

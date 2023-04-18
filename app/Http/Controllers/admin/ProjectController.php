@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -128,13 +130,21 @@ class ProjectController extends Controller
 
             'image.image' => 'Il file caricato deve essere un\'immagine',
             'image.mimes' => 'Le estensioni accettate per l\'immagine sono jpg, png, jpeg',
-          ])->validate();
-            return $validator;
+          ]);
 
-            if(array_key_exists('image', $request->all())) {
-                die("esiste");
-            } else die("non esiste");
-            dd($reques->all());
+          $data = $request->all();
+
+            if(Arr::exists($data, 'image')) {
+                Storage::put('uploads/projects', $data['image']);
+            } 
+            dd($data);
+
+            $project = new Project;
+            $project->fill($data);
+            $project->slug = Project::generateUniqueSlug($project->title);
+            $project->save();
+
+            return to_route('admin.projects.show', $project)
 
         
       }

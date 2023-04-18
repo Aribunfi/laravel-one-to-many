@@ -11,3 +11,12 @@ class Project extends Model
     use HasFactory;
     protected $fillable = ["title", "year", "kind", "time", "description", "image"];
 }
+
+
+class User extends Model {
+public function projects() {
+    return $this->hasMany(Post::class);
+}
+
+
+}

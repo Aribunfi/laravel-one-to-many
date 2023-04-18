@@ -14,5 +14,5 @@
 <strong>Kind: </strong> {{ $project->kind }} <br />
 <strong>Time: </strong> {{ $project->time }} <br />
 <strong>Description: </strong> {{ $project->description }} <br />
-<img src="{{ asset($project->image)}}" alt="{{$project->slug}}" width="300">
+<img src="{{ asset('storage/' . $project->image)}}" alt="{{$project->slug}}" width="300">
 @endsection

@@ -136,13 +136,12 @@ class ProjectController extends Controller
 
             if(Arr::exists($data, 'image')) {
                 $path = Storage::put('uploads/projects', $data['image']);
-            } 
-            dd($path);
+                $data['image'] = $path;
+            }  
 
             $project = new Project;
             $project->fill($data);
             $project->slug = Project::generateUniqueSlug($project->title);
-            $project->image = $path;
 
             $project->save();
 

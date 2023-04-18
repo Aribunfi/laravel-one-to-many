@@ -102,7 +102,7 @@ class ProjectController extends Controller
             'kind' => 'required|string|in:graphic,web,writing',
             'time' => 'required|integer',
             'description' => 'nullable|string'
-            'image' => 'nullable|image|mimes:jpg,png,jpeg'
+            'image' => 'nullable|image|mimes:jpg,png,jpeg',
 
           ],
           [
@@ -134,7 +134,7 @@ class ProjectController extends Controller
             if(array_key_exists('image', $request->all())) {
                 die("esiste");
             } else die("non esiste");
-dd($reques->all());
+            dd($reques->all());
 
         
       }

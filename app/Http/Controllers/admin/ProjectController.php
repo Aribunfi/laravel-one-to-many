@@ -98,10 +98,12 @@ class ProjectController extends Controller
           $data,
           [
             'title' => 'required|string|max:20',
-            'year' => "required|integer|between:2009,2023",
-            "kind" => "required|string|in:graphic,web,writing",
-            "time" => "required|integer",
-            "description" => "nullable|string"
+            'year' => 'required|integer|between:2009,2023',
+            'kind' => 'required|string|in:graphic,web,writing',
+            'time' => 'required|integer',
+            'description' => 'nullable|string'
+            'image' => 'nullable|image|mimes:jpg,png,jpeg'
+
           ],
           [
             'title.required' => 'Il titolo è obbligatorio',
@@ -123,10 +125,18 @@ class ProjectController extends Controller
             // 'img.string' => 'L\'immagine deve essere una stringa',
             
             'description.string' => 'La descrizione deve essere una stringa',
-          ]
-        )->validate();
-      
-        return $validator;
+
+            'image.image' => 'Il file caricato deve essere un\'immagine',
+            'image.mimes' => 'Le estensioni accettate per l\'immagine sono jpg, png, jpeg',
+          ])->validate();
+            return $validator;
+
+            if(array_key_exists('image', $request->all())) {
+                die("esiste");
+            } else die("non esiste");
+dd($reques->all());
+
+        
       }
 }
 

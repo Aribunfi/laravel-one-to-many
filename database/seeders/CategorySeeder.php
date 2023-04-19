@@ -20,6 +20,7 @@ class CategorySeeder extends Seeder
         foreach($labels as $label) {
             $category = new Category();
             $category->label = $label;
+            $category->color = $fake->hexColor();
 
             $category->save();
         }

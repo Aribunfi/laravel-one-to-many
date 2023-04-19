@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::table('projects', function (Blueprint $table) {
-            $table->unsignedBigInteger('category_id');
             $table->foreignId('category_id')->constrained();
         });
     }

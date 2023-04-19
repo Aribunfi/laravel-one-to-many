@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table>string('label', 20);
-            $table>char('color', 7);
-            $table->timestamps();
+        Schema::table('projects', function (Blueprint $table) {
+            $table->unsignedBigInteger('category_id');
+            $table->foreignId('category_id')->constrained();
         });
     }
 
@@ -28,6 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::table('projects', function (Blueprint $table) {
+            $table->dropForeign('projects_category_id_foreign');
+            $table->dropColumn('category_id');
+        });
     }
 };

@@ -10,9 +10,36 @@ class Project extends Model
 {
     use HasFactory;
     protected $fillable = ["title", "year", "kind", "time", "description", "image"];
-public function user(){
+    public function user(){
     return $this->belongsTo(User::class);
 }
+
+protected function getUpdatedAttribute($value) {
+    return date('d/m/Y H:i', strtotime($value));
+}
+
+protected function getCreatedAtAttribute($value) {
+    return date('d/m/Y H:i', strtotime($value));
+}
+
+public function getImageUri() {
+    return $this->image ? asset('storage/' . $this->image) : 'https://www.lupoburtscher.it/wp-content/uploads/2018/04/lupo-burtscher-progetto-grafico-30-03.jpg';
+}
+
+public static function generateUniqueSlug($title) {
+    $slug = Str::of($title)->slug('-');
+
+    $projects = Project::where('slug', $slug)->get();
+
+    $i = 1;
+    $original_slug = $slug;
+    while(count($projects)) {
+        $slug = $original_slug . "-" . ++$i;
+        $projects = Project::where('slug', $slug)->get();
+    }
+    return $slug;
+}
+
 }
 
 

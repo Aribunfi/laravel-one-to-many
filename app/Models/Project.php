@@ -12,7 +12,9 @@ class Project extends Model
 
     protected $fillable = ["title", "year", "kind", "time", "description", "image"];
 
-
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 
     
     public function user(){

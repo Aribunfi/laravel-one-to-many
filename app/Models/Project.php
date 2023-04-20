@@ -8,8 +8,13 @@ use Illuminate\Support\Str;
 
 class Project extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
     protected $fillable = ["title", "year", "kind", "time", "description", "image"];
+
+
+
+    
     public function user(){
     return $this->belongsTo(User::class);
 }

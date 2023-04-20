@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Arr;
@@ -28,7 +29,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create', compact('project'));
+        $project = new Project;
+        $categories = Category::all();
+        return view('admin.projects.form', compact('project', 'categories'));
     }
 
     /**
@@ -65,7 +68,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('projects.edit', compact('project'));
+        $categories = Category::all();
+
+        return view('admin.projects.form', compact('project', 'categories'));
     }
 
     /**
@@ -97,7 +102,7 @@ class ProjectController extends Controller
 
     private function validation($data) {
         $validator = Validator::make(
-          $data,
+          $data
           [
             'title' => 'required|string|max:20',
             'year' => 'required|integer|between:2009,2023',

@@ -10,7 +10,7 @@ class Project extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ["title", "year", "kind", "time", "description", "image"];
+    protected $fillable = ["title", "category_id", "year", "kind", "time", "description", "image"];
 
     public function category(){
         return $this->belongsTo(Category::class);

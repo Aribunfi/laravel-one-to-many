@@ -28,14 +28,14 @@
 
     <div class="row mb-3">
         <div class="col-md-2 text-end">
-<label for="title" class="form-label">Category</label>
+<label for="category_id" class="form-label">Category</label>
         </div>
         <div class="col-md-10">
 
-            <select class="form-select">
+            <select name="category_id" id="category_id" class="form-select">
                 <option value="">Uncategorized</option>
                 @foreach($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->label }}</option>
+                <option @if(old('category_id', $project->category_id) == $category->id) selected @endif value="{{ $category->id }}">{{ $category->label }}</option>
 
                 @endforeach
         </div>

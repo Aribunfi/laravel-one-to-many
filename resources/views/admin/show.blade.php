@@ -12,6 +12,7 @@
 
 @section('content')
 <strong>Title: </strong> {{ $project->title }} <br />
+<strong>Categoria: </strong> {{ $project->category->label }} <br />
 <strong>Year: </strong> {{ $project->year }} <br />
 <strong>Kind: </strong> {{ $project->kind }} <br />
 <strong>Time: </strong> {{ $project->time }} <br />

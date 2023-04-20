@@ -103,7 +103,7 @@ class ProjectController extends Controller
             'year' => 'required|integer|between:2009,2023',
             'kind' => 'required|string|in:graphic,web,writing',
             'time' => 'required|integer',
-            'description' => 'nullable|string'
+            'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpg,png,jpeg',
 
           ],

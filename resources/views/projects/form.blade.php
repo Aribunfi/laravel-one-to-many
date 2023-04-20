@@ -1,3 +1,56 @@
+@section('content')
+
+@include('layouts.partials.errors')
+
+<section class="card py-2">
+    <div class="card-body">
+        @if ($project->id)
+        @endif
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-2 text-end">
+<label for="title" class="form-label">Titolo</label>
+        </div>
+        <div class="col-md-10">
+            <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title', $project->title) }}" />
+            @error('title')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+
+        </div>
+
+    </div>
+
+
+
+    <div class="row mb-3">
+        <div class="col-md-2 text-end">
+<label for="title" class="form-label">Category</label>
+        </div>
+        <div class="col-md-10">
+
+            <select class="form-select">
+                <option value="">Uncategorized</option>
+                @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->label }}</option>
+
+                @endforeach
+        </div>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+
+
 <div class="col-md-2 text-end">
 <label for="is_published" class="form-label">Pubblicato</label>
 </div>
